@@ -1,0 +1,32 @@
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+{{- if hasKey . "gitSigningKey" }}
+	signingkey = {{ .gitSigningKey }}
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+{{- else }}
+[commit]
+	gpgsign = false
+[tag]
+	gpgsign = false
+{{- end }}
+[push]
+	autoSetupRemote = true
+[core]
+	pager = delta
+[delta]
+	syntax-theme = Monokai Extended
+	navigate = true
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictstyle = zdiff3
+[include]
+    path = ~/.gitconfig.local

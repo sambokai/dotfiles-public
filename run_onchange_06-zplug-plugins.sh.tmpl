@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+# Install/update zplug plugins when zshrc changes
+# zshrc hash: {{ include "dot_zshrc.tmpl" | sha256sum }}
+
+{{- if eq .chezmoi.os "darwin" }}
+ZPLUG_HOME="/opt/homebrew/opt/zplug"
+{{- else if eq .chezmoi.os "linux" }}
+ZPLUG_HOME="/home/linuxbrew/.linuxbrew/opt/zplug"
+{{- end }}
+
+if [[ -f "$ZPLUG_HOME/init.zsh" ]]; then
+    echo "Installing zplug plugins..."
+    # Source the full zshrc (which defines plugins) and then install them
+    # Using --no-rcs to skip system files, then explicitly source our zshrc
+    zsh --no-rcs -c "source '$HOME/.zshrc' && zplug install" 2>/dev/null || true
+else
+    echo "zplug not yet installed, skipping plugin installation"
+fi

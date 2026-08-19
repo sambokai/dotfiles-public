@@ -1,0 +1,20 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@warp-dot-dev/opencode-warp"],
+  "permission": {
+    "edit": {
+      "*": "allow",
+    },
+    "bash": {
+      "chezmoi *": "allow",
+      "chezmoi apply *": "ask",
+      "chezmoi purge *": "deny",
+      "git add *": "allow",
+      "git commit *": "allow",
+      "git push *": "ask",
+      "mkdir *": "allow",
+      "rm *": "ask",
+      "rm -rf *": "deny",
+    },
+  },
+}

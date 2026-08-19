@@ -1,0 +1,36 @@
+#!/bin/bash
+set -euo pipefail
+
+if [[ -t 1 ]]; then
+  BOLD="$(tput bold)"
+  DIM="$(tput dim)"
+  RESET="$(tput sgr0)"
+  GREEN="$(tput setaf 2)"
+  CYAN="$(tput setaf 6)"
+else
+  BOLD=""
+  DIM=""
+  RESET=""
+  GREEN=""
+  CYAN=""
+fi
+
+print_rule() {
+  printf "%s\n" "------------------------------------------------------------"
+}
+
+print_cmd() {
+  printf "  %s$ %s%s\n" "$DIM" "$1" "$RESET"
+}
+
+echo ""
+print_rule
+printf "%s%sDotfiles apply summary%s\n" "$CYAN" "$BOLD" "$RESET"
+print_rule
+echo ""
+
+printf "%s%sDotfiles apply finished.%s\n" "$GREEN" "$BOLD" "$RESET"
+printf "%sThis final hook is informational only.%s\n" "$DIM" "$RESET"
+printf "%sRecommended checks (after apply):%s\n" "$DIM" "$RESET"
+print_cmd "chezmoi verify   # exit code: 0=clean, 1=differences remain"
+print_cmd "chezmoi status   # list pending items"

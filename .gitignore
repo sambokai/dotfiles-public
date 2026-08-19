@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Machine-specific chezmoi overrides (identity lives here, never in git)
+chezmoi.local.toml
+
+# Secrets / private keys
+*.pem
+*.key
+id_rsa
+id_ed25519

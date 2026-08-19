@@ -1,0 +1,146 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-tab": "pane::ActivateNextItem",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-shift-g": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-shift-g": "search::SelectPreviousMatch",
+    },
+  },
+  {
+    "context": "Pane",
+    "unbind": {
+      "cmd-g": "search::SelectNextMatch",
+    },
+  },
+  {
+    "context": "ThreadsSidebar",
+    "unbind": {
+      "cmd-g": "agents_sidebar::ToggleThreadHistory",
+    },
+  },
+  {
+    "bindings": {
+      "cmd-g": "git_panel::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-b": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "bindings": {
+      "cmd-b": "project_panel::Toggle",
+    },
+  },
+  {
+    "context": "DebugPanel",
+    "unbind": {
+      "cmd-i": "debugger::ToggleSessionPicker",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-i": "editor::ShowSignatureHelp",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-i": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "bindings": {
+      "cmd-i": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "!AcpThread > Editor && mode == full",
+    "unbind": {
+      "ctrl-enter": "assistant::InlineAssist",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-i": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "cmd-?": "agent::ToggleFocus",
+    },
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-shift-i": "editor::Format",
+    },
+  },
+  {
+    "context": "GitBranchSelector || GitBranchSelector > Picker > Editor",
+    "unbind": {
+      "cmd-shift-i": "branch_picker::FilterRemotes",
+    },
+  },
+  // {
+  //   "context": "FileFinder || FileFinder > Picker > Editor",
+  //   "unbind": {
+  //     "cmd-shift-i": "file_finder::ToggleFilterMenu",
+  //   },
+  // },
+  {
+    "context": "GitBranchSelector || GitBranchSelector > Picker > Editor",
+    "unbind": {
+      "cmd-shift-i": "branch_picker::FilterRemotes",
+    },
+  },
+  {
+    "context": "GitBranchSelector || GitBranchSelector > Picker > Editor",
+    "unbind": {
+      "cmd-shift-i": "branch_picker::FilterRemotes",
+    },
+  },
+]

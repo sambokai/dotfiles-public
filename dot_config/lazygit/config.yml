@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+disableStartupPopups: true
+gui:
+  screenMode: half
+  showCommandLog: false
+  sidePanelWidth: 0.3333
+  showBottomLine: false
+  showRandomTip: false
+  showPanelJumps: false
+  showListFooter: false
+  showDivergenceFromBaseBranch: arrowAndNumber
+  showNumstatInFilesView: true
+  expandFocusedSidePanel: false
+  showFileTree: true
+  scrollHeight: 1
+  mainPanelSplitMode: vertical  # horizontal | vertical | flexible
+  scrollPastBottom: false
+  mouseEvents: true
+  useHunkModeInStagingView: true
+  timeFormat: "02.01.06"
+  shortTimeFormat: "today 15:04"
+  showFileIcons: true
+  nerdFontsVersion: "3"

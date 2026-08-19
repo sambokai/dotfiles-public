@@ -1,0 +1,31 @@
+#!/bin/bash
+set -euo pipefail
+
+# ============================================
+# Set zsh as the default login shell
+# Uses system zsh (not Homebrew) for consistency
+# ============================================
+
+{{- if eq .chezmoi.os "darwin" }}
+ZSH_PATH="/bin/zsh"
+{{- else if eq .chezmoi.os "linux" }}
+ZSH_PATH="/usr/bin/zsh"
+{{- end }}
+
+if [[ "$SHELL" == "$ZSH_PATH" ]]; then
+    echo "zsh is already the default shell ($SHELL)"
+    exit 0
+fi
+
+echo "Current shell: $SHELL"
+echo "Setting zsh as default shell: $ZSH_PATH"
+
+if chsh -s "$ZSH_PATH"; then
+    echo ""
+    echo "Default shell changed to zsh successfully."
+    echo "NOTE: You must log out and log back in for changes to take effect."
+else
+    echo "Warning: Failed to change shell. You may need to run manually:"
+    echo "  chsh -s $ZSH_PATH"
+    exit 1
+fi

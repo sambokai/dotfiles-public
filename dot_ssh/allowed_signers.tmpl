@@ -1,0 +1,4 @@
+{{- if hasKey . "gitSigningKey" -}}
+# Trusted SSH signing keys for git signature verification
+{{ .email }} {{ .gitSigningKey }}
+{{ end -}}

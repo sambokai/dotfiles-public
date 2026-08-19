@@ -1,0 +1,14 @@
+---
+"workspace:decrease_font_size": meta--
+"terminal:toggle_block_filter_on_selected_or_last_block": shift-cmd-F
+"terminal:toggle_hide_cli_responses": none
+"workspace:increase_zoom": cmd-+
+"workspace:increase_font_size": meta-+
+"workspace:jump_to_latest_toast": cmd-g
+"find:find_next_occurrence": none
+"input:open_completion_suggestions": ctrl-space
+"workspace:open_global_search": none
+"workspace:decrease_zoom": cmd--
+"find:find_prev_occurrence": none
+"notebookview:decrease_font_size": none
+"editor_view:insert_autosuggestion": tab

@@ -1,0 +1,6 @@
+*.md
+docs/
+
+{{ if ne .chezmoi.os "darwin" }}
+.local/bin/darwin/
+{{ end }}

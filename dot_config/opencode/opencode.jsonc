@@ -1,0 +1,316 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "manual",
+  "plugin": ["@warp-dot-dev/opencode-warp"],
+
+
+  "provider": {
+    "openrouter": {
+      "models": {
+        "deepseek/deepseek-v4-flash@preset/deepseek-official-provider": {}
+      }
+    }
+  },
+  "mcp": {
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--headless=true"],
+      "enabled": true
+    }
+  },
+
+  "permission": {
+    "*": "ask",
+
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "id_rsa": "deny",
+      "id_ed25519": "deny",
+      ".ssh/**": "deny",
+      ".git/**": "ask"
+    },
+
+    "glob": "allow",
+    "grep": "allow",
+    "lsp": "allow",
+
+    "edit": {
+      "*": "ask",
+      "src/*": "allow",
+      "test/*": "allow",
+      "tests/*": "allow",
+      "docs/*": "allow",
+      "scripts/*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "*.pem": "deny",
+      "*.key": "deny",
+      ".ssh/**": "deny",
+      ".git/**": "deny",
+      "package.json": "allow",
+      "tsconfig.json": "allow",
+      "vite.config.ts": "allow",
+      "index.html": "allow",
+      "**.md": "allow"
+
+    },
+
+    "bash": {
+      "*": "ask",
+
+      "pwd": "allow",
+      "ls": "allow",
+      "ls *": "allow",
+
+      "wc *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+
+      "git status": "allow",
+      "git add *": "ask",
+      "git status *": "allow",
+      "git diff": "allow",
+      "git diff *": "allow",
+      "git show": "allow",
+      "git show *": "allow",
+      "git log": "allow",
+      "git log *": "allow",
+      "git branch": "allow",
+      "git branch *": "allow",
+
+      "cat *": "allow",
+      "echo *": "allow",
+      "grep *": "allow",
+      "rg *": "allow",
+      "find *": "allow",
+      "sort *": "allow",
+      "tree *": "allow",
+
+      "npm *": "ask",
+      "pnpm *": "ask",
+      "npm test *": "allow",
+      "pnpm test *": "allow",
+      "npm typecheck *": "allow",
+      "pnpm typecheck *": "allow",
+      "npm run typecheck *": "allow",
+      "pnpm run typecheck *": "allow",
+      "npm exec vitest *": "allow",
+      "pnpm exec vitest *": "allow",
+      "npm run dev *": "allow",
+      "pnpm dev *": "allow",
+      "yarn *": "ask",
+      "bun *": "ask",
+
+      "docker *": "ask",
+      "docker compose *": "ask",
+
+      // Docker — read-only inspection (mutating commands stay "ask")
+      "docker ps*": "allow",
+      "docker container ls*": "allow",
+      "docker container inspect*": "allow",
+      "docker info*": "allow",
+      "docker version*": "allow",
+      "docker --version*": "allow",
+      "docker images*": "allow",
+      "docker image ls*": "allow",
+      "docker image inspect*": "allow",
+      "docker image history*": "allow",
+      "docker inspect*": "allow",
+      "docker logs*": "allow",
+      "docker top*": "allow",
+      "docker port*": "allow",
+      "docker stats*": "allow",
+      "docker history*": "allow",
+      "docker volume ls*": "allow",
+      "docker volume inspect*": "allow",
+      "docker network ls*": "allow",
+      "docker network inspect*": "allow",
+      "docker system df*": "allow",
+      "docker system info*": "allow",
+      "docker context ls*": "allow",
+      "docker context inspect*": "allow",
+      "docker compose version*": "allow",
+      "docker compose ps*": "allow",
+      "docker compose ls*": "allow",
+      "docker compose config*": "allow",
+      "docker compose images*": "allow",
+      "docker compose top*": "allow",
+      "docker compose port*": "allow",
+
+      // Services — read-only (start/stop/enable/disable stay "ask")
+      "systemctl status*": "allow",
+      "systemctl is-active*": "allow",
+      "systemctl is-enabled*": "allow",
+      "systemctl list-units*": "allow",
+      "systemctl list-unit-files*": "allow",
+      "systemctl show*": "allow",
+      "systemctl cat*": "allow",
+      "systemctl --version*": "allow",
+
+      // Network — read-only (socket-destroy mode stays "ask" below)
+      "ss": "allow",
+      "ss *": "allow",
+      "ip addr": "allow",
+      "ip addr show*": "allow",
+      "ip route": "allow",
+      "ip route show*": "allow",
+      "ip link": "allow",
+      "ip link show*": "allow",
+      "ip a": "allow",
+      "ip a show*": "allow",
+      "ping *": "allow",
+      "showmount *": "allow",
+
+      // System info
+      "which *": "allow",
+      "id": "allow",
+      "id *": "allow",
+      "who": "allow",
+      "who *": "allow",
+      "whoami": "allow",
+      "uname": "allow",
+      "uname *": "allow",
+      "hostname": "allow",
+      "uptime*": "allow",
+      "nproc*": "allow",
+      "free": "allow",
+      "free *": "allow",
+      "df": "allow",
+      "df *": "allow",
+      "du": "allow",
+      "du *": "allow",
+      "systemd-detect-virt*": "allow",
+      "lscpu*": "allow",
+      "lsblk*": "allow",
+
+      // Packages — read-only (install/upgrade/remove stay "ask")
+      "apt-cache *": "allow",
+      "apt list *": "allow",
+      "dpkg -l *": "allow",
+      "dpkg-query *": "allow",
+
+      // Tailscale — read-only
+      "tailscale status*": "allow",
+      "tailscale version*": "allow",
+      "tailscale ip *": "allow",
+      "tailscale ping *": "allow",
+      "tailscale whois *": "allow",
+
+      // Misc read-only
+      "uniq *": "allow",
+      "crontab -l*": "allow",
+      "opencode --version*": "allow",
+      "op --version*": "allow",
+      "npm root *": "allow",
+      "npm ls *": "allow",
+
+      "curl *": "ask",
+      "wget *": "ask",
+
+      "git commit *": "ask",
+      "git push *": "ask",
+      "git reset *": "ask",
+      "git clean *": "ask",
+
+      "*--hard*": "ask",
+      "*--force*": "ask",
+
+      "kill *": "ask",
+      "killall *": "ask",
+      "pkill *": "ask",
+
+      "curl *|*sh*": "ask",
+      "wget *|*sh*": "ask",
+
+      "git stash drop *": "ask",
+      "git stash clear*": "ask",
+      "git restore *": "ask",
+      "git rebase *": "ask",
+      "git merge *": "ask",
+      "git cherry-pick *": "ask",
+      "git branch -D *": "ask",
+      "git branch -d *": "ask",
+      "git branch --delete*": "ask",
+      "git checkout -- *": "ask",
+
+      "reboot*": "ask",
+
+      "rm *": "ask",
+      "chmod *": "ask",
+      "chown *": "ask",
+
+      "find * -delete*": "ask",
+      "find * -exec*": "ask",
+
+      "sleep *": "allow",
+      "time *": "allow",
+      "date *": "allow",
+
+      // Safety overrides — last matching rule wins. Never auto-approve shell
+      // composition around an otherwise read-only command.
+      "*;*": "ask",
+      "*&*": "ask",
+      "*|*": "ask",
+      "*>*": "ask",
+      "*<*": "ask",
+      "*$(*": "ask",
+      "*`*": "ask",
+      "*\n*": "ask",
+
+      // ss -K/--kill destroys sockets. Catch short-option clusters and
+      // abbreviated long options as well as the canonical spellings.
+      "ss *K*": "ask",
+      "ss *--k*": "ask",
+
+      // Unconditionally denied operations remain last so the safety asks above
+      // cannot weaken them when a command also contains shell metacharacters.
+      "shutdown*": "deny",
+      "poweroff*": "deny",
+      "dd *": "deny",
+      "mkfs*": "deny",
+      "fdisk *": "deny",
+      "parted *": "deny",
+      "wipefs *": "deny",
+      "rm -rf *": "deny",
+      "sudo *": "deny",
+      "*--no-preserve-root*": "deny"
+    },
+
+    "webfetch": "allow",
+    "websearch": "allow",
+    "external_directory": {
+      "*": "ask",
+      "/etc/os-release": "allow",
+      "/etc/fstab": "allow",
+      "/etc/docker/**": "allow",
+      "/etc/apt/**": "allow",
+      "/etc/cron.d/**": "allow",
+      "/etc/ssh/sshd_config": "allow",
+      "/etc/ssh/sshd_config.d/**": "allow",
+      "/sys/class/dmi/**": "allow"
+    },
+    "doom_loop": "ask",
+    "task": "allow",
+    "skill": "allow",
+    "question": "allow",
+    "todowrite":"allow",
+
+    "chrome-devtools_take_screenshot": "allow",
+    "chrome-devtools_take_snapshot": "allow",
+    "chrome-devtools_list_pages": "allow",
+    "chrome-devtools_list_console_messages": "allow",
+    "chrome-devtools_get_console_message": "allow",
+    "chrome-devtools_list_network_requests": "allow",
+    "chrome-devtools_get_network_request": "allow",
+    "chrome-devtools_lighthouse_audit": "allow",
+    "chrome-devtools_wait_for": "allow",
+    "chrome-devtools_close_page": "allow",
+    "chrome-devtools_press_key": "allow"
+  }
+}

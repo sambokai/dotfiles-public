@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+# Install Node.js LTS via pnpm env (overrides Homebrew Node)
+# This runs after brew bundle, so pnpm and node should be available
+
+if ! command -v node &> /dev/null; then
+    echo "Node.js not installed yet, skipping pnpm env setup..."
+    exit 0
+fi
+
+if ! command -v pnpm &> /dev/null; then
+    echo "pnpm not found, skipping..."
+    exit 0
+fi
+
+echo "Setting up Node.js LTS via pnpm env..."
+pnpm env use --global lts
+echo "Node.js is now managed by pnpm env:"
+node --version
+pnpm --version

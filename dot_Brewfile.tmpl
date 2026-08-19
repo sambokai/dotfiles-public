@@ -1,0 +1,60 @@
+# Brewfile for chezmoi
+# Quality-of-life CLI tools for development
+# Install with: brew bundle --file=~/.Brewfile
+
+brew "chezmoi"           # Dotfile Manager
+
+# Shell
+brew "zplug"             # Zsh plugin manager
+brew "zsh-autosuggestions"  # Fish-like autosuggestions for zsh
+
+# Modern CLI replacements
+brew "zoxide"            # Smart cd alternative
+brew "fzf"               # Fuzzy finder
+brew "eza"               # Modern ls replacement
+brew "bat"               # Modern cat replacement with syntax highlighting
+brew "fd"                # Fast find alternative
+
+# GNU core utilities (for macOS compatibility)
+brew "coreutils"         # GNU core utilities
+brew "findutils"         # GNU find, locate, xargs
+brew "gnu-sed"           # GNU sed
+
+# Git
+brew "git-delta"         # Git pager with syntax highlighting
+brew "lazygit"           # Git TUI
+brew "gh"                # GitHub CLI
+
+# Modern CLI tools
+brew "moor"              # Modern pager
+brew "chafa"             # Image preview for terminal
+brew "hexyl"             # Hex viewer for binary files
+brew "nano"              # Install latest version of nano text editor
+brew "uv"                # Fast Python package installer
+
+# Node.js development
+brew "node"              # JavaScript runtime (base install, overridden by pnpm)
+brew "pnpm"              # Fast, disk space efficient package manager
+brew "deno"              # JavaScript/TypeScript runtime
+
+# Additional CLI tools
+brew "ripgrep"           # Fast grep alternative (rg)
+brew "viddy"             # Modern watch replacement
+brew "htop"              # Interactive process viewer
+brew "ffmpeg"            # Video/audio processing
+brew "atomicparsley"     # Metadata for MP4 files
+tap "mutagen-io/mutagen"
+brew "mutagen-io/mutagen/mutagen" # Audio metadata editing
+brew "exiftool"          # Read/write image metadata
+brew "wget"              # Download tool
+cask "codex"             # OpenAI Codex CLI
+brew "fresh-editor"      # Fresh auto-confirmation CLI
+tap "anomalyco/tap"
+brew "anomalyco/tap/opencode"  # AI coding agent for the terminal
+
+# macOS-only casks
+{{- if eq .chezmoi.os "darwin" }}
+cask "iterm2"            # Terminal emulator
+cask "warp"              # Modern terminal emulator (Rust, AI-powered)
+cask "zed"               # Code editor
+{{- end }}
