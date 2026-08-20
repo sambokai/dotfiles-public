@@ -12,38 +12,33 @@ Cross-platform dotfiles managed by [chezmoi](https://chezmoi.io/) for macOS and 
 
 ## Setup
 
-1. Install chezmoi:
+One command (installs chezmoi, clones this repo, and applies everything):
 
-   ```bash
-   sh -c "$(curl -fsLS get.chezmoi.io)"
-   ```
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply <github-username>/dotfiles-public
+```
 
-2. Initialize from this repo and apply:
+On first run, chezmoi prompts for your name and email and stores them in
+`~/.config/chezmoi/chezmoi.toml` (it won't ask again).
 
-   ```bash
-   chezmoi init <github-username>/dotfiles
-   chezmoi apply
-   ```
+> Note: the repo must be public (or your machine must have GitHub access)
+> for `chezmoi init` to clone it.
 
-3. Set your identity. Copy the example config and fill in your details:
+### Optional: git commit signing
 
-   ```bash
-   mkdir -p ~/.config/chezmoi
-   cp example.chezmoi.local.toml ~/.config/chezmoi/chezmoi.local.toml
-   # edit name / email (and optionally gitSigningKey), then re-apply
-   chezmoi apply
-   ```
-
-4. Add any machine-specific git overrides to `~/.gitconfig.local`
-   (e.g. a signing program or proxy settings).
+Commit signing is disabled by default and left for you to configure per
+machine. Put your signing setup (SSH or GPG) in `~/.gitconfig.local`, which
+is already included by the generated git config.
 
 ## Customization
 
 - `dot_Brewfile.tmpl` — Homebrew formulae and casks.
-- `~/.config/chezmoi/chezmoi.local.toml` — per-machine `[data]`
+- `.chezmoi.toml.tmpl` — generates the config file; prompts for `name` and
+  `email` on first init.
+- `~/.config/chezmoi/chezmoi.toml` — per-machine `[data]`
   (`name`, `email`, optional `gitSigningKey`).
 
 ## Notes
 
-- No secrets or personal data are stored in this repo. Identity is provided
-  per-machine via `~/.config/chezmoi/chezmoi.local.toml` (gitignored).
+- No secrets or personal data are stored in this repo. Identity is prompted
+  for on first run and stored in the gitignored `~/.config/chezmoi/chezmoi.toml`.

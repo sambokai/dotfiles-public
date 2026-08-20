@@ -29,19 +29,15 @@ Managed via chezmoi. Source files are templates (`.tmpl`) that render to the hom
 {{- "..." | includeTemplate }} # include another template
 ```
 
-## Local Overrides
+## Identity / Data
 
-Create `~/.config/chezmoi/chezmoi.local.toml` for machine-specific values
-(see `example.chezmoi.local.toml`):
+`.chezmoi.toml.tmpl` generates `~/.config/chezmoi/chezmoi.toml` and prompts
+for `name` and `email` on `chezmoi init`. These become template variables
+`{{ .name }}` and `{{ .email }}`.
 
-```toml
-[data]
-    name = "Your Name"
-    email = "you@example.com"
-    gitSigningKey = "ssh-ed25519 AAAA..."
-```
-
-Access via `{{ .name }}`, `{{ .email }}`, `{{ .gitSigningKey }}`.
+Optional `gitSigningKey` (for SSH-signed commits) can be added manually to the
+`[data]` section of `~/.config/chezmoi/chezmoi.toml`; when present it's read
+via `{{ .gitSigningKey }}`.
 
 ## Common Commands
 

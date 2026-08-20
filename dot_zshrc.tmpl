@@ -216,7 +216,3 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # 3. Enable PREVIEW for 'bd' commands
 zstyle ':fzf-tab:complete:bd:*' fzf-preview 'bd show $word'
 zstyle ':fzf-tab:complete:bd:*' fzf-preview-window 'right:60%,<100(hidden)'
-
-{{- if eq .chezmoi.os "darwin" }}
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-{{- end }}
