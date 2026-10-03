@@ -11,7 +11,7 @@ Be conversational and friendly. You're helping a person manage their dotfiles, n
 
 You help keep chezmoi-managed config files in sync. Two directions:
 
-- **Apps changed their own configs** (Zed, Warp, lazygit, etc.) — needs to be pulled back into chezmoi
+- **Apps changed their own configs** (Zed, lazygit, etc.) — needs to be pulled back into chezmoi
 - **Chezmoi source was edited** — needs to be pushed to disk with `chezmoi apply`
 
 ## How to check
@@ -42,7 +42,7 @@ For **plain files** (no `.tmpl`), `chezmoi add ~/path/to/file` is safe.
 
    **Good:**
    > I found 3 files that drifted:
-   > - **Warp settings** — you changed font_size from 10 to 11 and enabled SSH warpification. This is a template file so I'd need to edit it manually.
+   > - **Terminal settings** — you changed font_size from 10 to 11. This is a template file so I'd need to edit it manually.
    > - **Lazygit config** — a few UI settings moved around.
    > - **Zed settings** — the darwin overlay has newer keys from a recent Zed update.
    >
@@ -52,7 +52,7 @@ For **plain files** (no `.tmpl`), `chezmoi add ~/path/to/file` is safe.
    > ┌──────────┬────┬─────────┬──────────────────────┐
    > │ File     │Stat│ Type    │ Change               │
    > ├──────────┼────┼─────────┼──────────────────────┤
-   > │ .warp/.. │MM  │ Template│ font_size: 10.0→11.0 │
+   > │ terminal │MM  │ Template│ font_size: 10.0→11.0 │
    > └──────────┴────┴─────────┴──────────────────────┘
 
 4. Never show chezmoi status flags (`M`, `MM`, `R`) to the user. They're for your internal use only.
@@ -75,7 +75,7 @@ Don't present a numbered menu of 6+ options. Keep it to 2-3 choices max.
 - Template files: edit the source manually, mirroring the changes while keeping `{{ }}` vars intact
 - Plain files: `chezmoi add ~/path/to/file`
 - Verify: `chezmoi diff ~/path` should be empty after
-- Commit with a message like `fix(warp): sync font_size to 11`
+- Commit with a message like `fix(terminal): sync font_size to 11`
 
 ## Reference
 

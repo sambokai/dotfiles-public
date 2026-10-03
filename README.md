@@ -7,7 +7,7 @@ Cross-platform dotfiles managed by [chezmoi](https://chezmoi.io/) for macOS and 
 - zsh + bash with Powerlevel10k, zplug, fzf, zoxide, eza, bat
 - git config (delta, lazygit) with per-machine identity
 - Homebrew package management (Brewfile)
-- Editor/terminal configs: Zed, Warp, OpenCode
+- Editor/terminal configs: Zed, OpenCode
 - One-shot install scripts (Homebrew, zsh, Node via pnpm)
 
 ## Setup
